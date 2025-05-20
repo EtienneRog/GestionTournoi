@@ -13,14 +13,15 @@ namespace GestionTournoi.App_Code
         private static string PoulesFile => HttpContext.Current.Server.MapPath("~/App_Data/poules.json");
 
         // === MATCHS ===
-        public static List<Match> LoadMatchs()
+        public static List<Matchs> LoadMatchs()
         {
-            if (!File.Exists(MatchsFile)) return new List<Match>();
+            LoadPoules();
+            if (!File.Exists(MatchsFile)) return new List<Matchs>();
             var json = File.ReadAllText(MatchsFile);
-            return JsonConvert.DeserializeObject<List<Match>>(json) ?? new List<Match>();
+            return JsonConvert.DeserializeObject<List<Matchs>>(json) ?? new List<Matchs>();
         }
 
-        public static void SaveMatchs(List<Match> matchs)
+        public static void SaveMatchs(List<Matchs> matchs)
         {
             var json = JsonConvert.SerializeObject(matchs, Formatting.Indented);
             File.WriteAllText(MatchsFile, json);
@@ -45,7 +46,9 @@ namespace GestionTournoi.App_Code
         {
             if (!File.Exists(PoulesFile)) return new List<Poule>();
             var json = File.ReadAllText(PoulesFile);
-            return JsonConvert.DeserializeObject<List<Poule>>(json) ?? new List<Poule>();
+            List<Poule> listPoules = JsonConvert.DeserializeObject<List<Poule>>(json) ?? new List<Poule>();
+            PouleManager.LastGeneratedPoules = listPoules;
+            return listPoules;
         }
 
         public static void SavePoules(List<Poule> poules)

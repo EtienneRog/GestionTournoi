@@ -2,7 +2,7 @@
 // <généré automatiquement>
 //     Ce code a été généré par un outil.
 //
-//     Les modifications apportées à ce fichier peuvent provoquer un comportement incorrect et seront perdues si
+//     Les changements apportés à ce fichier peuvent provoquer un comportement incorrect et seront perdues si
 //     le code est régénéré.
 // </généré automatiquement>
 //------------------------------------------------------------------------------
@@ -15,48 +15,57 @@ namespace GestionTournoi
     {
 
         /// <summary>
-        /// Contrôle numPoulesTextBox.
+        /// Contrôle pnlParametres.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox numPoulesTextBox;
+        protected global::System.Web.UI.WebControls.Panel pnlParametres;
 
         /// <summary>
-        /// Contrôle equipesParPouleTextBox.
+        /// Contrôle txtNbPoules.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox equipesParPouleTextBox;
+        protected global::System.Web.UI.WebControls.TextBox txtNbPoules;
 
         /// <summary>
-        /// Contrôle decalageTextBox.
+        /// Contrôle txtEquipesParPoule.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox decalageTextBox;
+        protected global::System.Web.UI.WebControls.TextBox txtEquipesParPoule;
 
         /// <summary>
-        /// Contrôle generatePoulesButton.
+        /// Contrôle txtDecalage.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button generatePoulesButton;
+        protected global::System.Web.UI.WebControls.TextBox txtDecalage;
 
         /// <summary>
-        /// Contrôle RepeaterPoules.
+        /// Contrôle btnGenererPoules.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater RepeaterPoules;
+        protected global::System.Web.UI.WebControls.Button btnGenererPoules;
+
+        /// <summary>
+        /// Contrôle rptPoules.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptPoules;
     }
 }

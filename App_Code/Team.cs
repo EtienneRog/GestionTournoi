@@ -10,13 +10,13 @@ namespace GestionTournoi.App_Code
         public static int CompteurId = 0;
         public int Id { get; set; }
         public string Name { get; set; }
-        public int LevelValue { get; set; }  
+        public int Level { get; set; }  
         public int Points { get; set; }
-        public Team(string name, int levelValue, int points = 0)
+        public Team(string name, int niveau, int points = 0)
         {
             Id = CompteurId++;
             Name = name;
-            LevelValue = levelValue;
+            Level = niveau;
             Points = points;
         }
 
@@ -24,7 +24,7 @@ namespace GestionTournoi.App_Code
         {
             get
             {
-                return TournamentLevel.GetByValue(LevelValue)?.Name ?? "Inconnu";
+                return TournamentLevel.GetLevelName(Level);
             }
         }
 

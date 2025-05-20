@@ -1,51 +1,40 @@
-﻿<%@ Page Title="Poules" MasterPageFile="~/Site.Master" Language="C#" AutoEventWireup="true" CodeBehind="PoulesPage.aspx.cs" Inherits="GestionTournoi.PoulesPage" %>
-
+﻿<%@ Page Title="Poules" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="PoulesPage.aspx.cs" Inherits="GestionTournoi.PoulesPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="form-container">
-        <h3>Paramétrer la génération des poules</h3>
+    <h1>Liste des Poules</h1>
 
-        <!-- Nombre de poules -->
-        <label for="numPoules">Nombre de Poules:</label>
-        <asp:TextBox ID="numPoulesTextBox" runat="server" Text="4"></asp:TextBox>
+    <asp:Panel ID="pnlParametres" runat="server">
+        <h2>Paramètres de génération</h2>
+        <label for="nbPoules">Nombre de Poules:</label>
+        <asp:TextBox ID="txtNbPoules" runat="server" Text="4" Width="50px" />
         <br />
-
-        <!-- Nombre d'équipes par poule -->
         <label for="equipesParPoule">Nombre d'Équipes par Poule:</label>
-        <asp:TextBox ID="equipesParPouleTextBox" runat="server" Text="3"></asp:TextBox>
+        <asp:TextBox ID="txtEquipesParPoule" runat="server" Text="3" Width="50px" />
         <br />
-
-        <!-- Numéro de la phase de poule -->
         <label for="decalage">Numéro de la phase de poule:</label>
-        <asp:TextBox ID="decalageTextBox" runat="server" Text="1"></asp:TextBox>
+        <asp:TextBox ID="txtDecalage" runat="server" Text="1" Width="50px"/>
         <br />
+        <asp:Button ID="btnGenererPoules" runat="server" Text="Générer les poules" OnClick="btnGenererPoules_Click" />
+        <br /><br />
+    </asp:Panel>
 
-        <!-- Bouton pour générer les poules -->
-        <asp:Button ID="generatePoulesButton" runat="server" Text="Générer les Poules" OnClick="GeneratePoules_Click" />
-    </div>
+    <asp:Repeater ID="rptPoules" runat="server"  OnItemDataBound="rptPoules_ItemDataBound">
+        <ItemTemplate>
+            <div style="border:1px solid #ccc; padding:10px; margin-bottom:15px;">
+                <h3>
+                    <asp:HyperLink ID="lnkPoule" runat="server" 
+                        NavigateUrl='<%# "PouleMatch.aspx?poule=" + Eval("Name") %>' 
+                        Text='<%# Eval("Name") %>'></asp:HyperLink>
+                </h3>
+                <asp:GridView ID="gvEquipes" runat="server" AutoGenerateColumns="false" CssClass="table">
+                    <Columns>
+                        <asp:BoundField HeaderText="Équipe" DataField="Name" />
+                        <asp:BoundField HeaderText="Niveau" DataField="Level" />
+                        <asp:BoundField HeaderText="Points" DataField="Points" />
+                    </Columns>
+                </asp:GridView>
+            </div>
+        </ItemTemplate>
+    </asp:Repeater>
 
-    <div>
-        <asp:Repeater ID="RepeaterPoules" runat="server">
-            <HeaderTemplate>
-                <h3>Poules du Tournoi</h3>
-            </HeaderTemplate>
-            <ItemTemplate>
-                <div>
-                    <h3>
-                        <asp:HyperLink
-                            ID="lnkPoule"
-                            runat="server"
-                            NavigateUrl='<%# Eval("Name", "PouleMatch.aspx?nom={0}") %>'
-                            Text='<%# Eval("Name") %>' />
-                    </h3>
-                    <ul>
-                        <%# GetTeamList(Container) %>
-                    </ul>
-                </div>
-            </ItemTemplate>
-            <FooterTemplate>
-                <hr />
-            </FooterTemplate>
-        </asp:Repeater>
-    </div>
 </asp:Content>

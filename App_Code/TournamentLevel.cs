@@ -21,9 +21,10 @@ namespace GestionTournoi.App_Code
             };
         }
 
-        public static TournamentLevel GetByValue(int value)
+        public static string GetLevelName(int value)
         {
-            return GetAllLevels().Find(l => l.Value == value);
+            var level = GetAllLevels().FirstOrDefault(l => l.Value == value);
+            return level != null ? level.Name : "Inconnu";
         }
     }
 }

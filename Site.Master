@@ -11,23 +11,24 @@
             overflow: hidden;
         }
 
-        .navbar a {
-            float: left;
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 20px;
-            text-decoration: none;
-        }
+            .navbar a {
+                float: left;
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 20px;
+                text-decoration: none;
+            }
 
-        .navbar a:hover {
-            background-color: #ddd;
-            color: black;
-        }
+                .navbar a:hover {
+                    background-color: #ddd;
+                    color: black;
+                }
 
-        .navbar .active {
-            background-color: #4CAF50;
-        }
+            .navbar .active {
+                background-color: #4CAF50;
+            }
+
     </style>
 </head>
 <body>
@@ -35,7 +36,7 @@
         <div class="navbar">
             <!-- Liens de navigation -->
             <a href="TeamsPage.aspx" class="<%# Request.Url.AbsolutePath.EndsWith("TeamsPage.aspx") ? "active" : "" %>">Équipes</a>
-            <a href="PoulePage.aspx" class="<%# Request.Url.AbsolutePath.EndsWith("PoulePage.aspx") ? "active" : "" %>">Poules</a>
+            <a href="PoulesPage.aspx" class="<%# Request.Url.AbsolutePath.EndsWith("PoulesPage.aspx") ? "active" : "" %>">Poules</a>
         </div>
 
         <asp:ContentPlaceHolder ID="MainContent" runat="server">

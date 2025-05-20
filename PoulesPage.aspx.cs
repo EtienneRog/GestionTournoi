@@ -1,11 +1,10 @@
-﻿using System;
+﻿using GestionTournoi.App_Code;
+using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using GestionTournoi.App_Code;
 
 namespace GestionTournoi
 {
@@ -15,44 +14,44 @@ namespace GestionTournoi
         {
             if (!IsPostBack)
             {
-                var poules = PouleManager.GetAllPoules();  // ← depuis JSON
-                rptPoules.DataSource = poules;
-                rptPoules.DataBind();
+                ChargerPoules();
             }
         }
 
-        // Méthode appelée lors du clic sur le bouton "Générer les Poules"
-        protected void GeneratePoules_Click(object sender, EventArgs e)
+        private void ChargerPoules()
         {
-            // Récupérer les valeurs des champs du formulaire
-            int nombrePoules = int.Parse(numPoulesTextBox.Text);  // Nombre de poules
-            int equipesParPoule = int.Parse(equipesParPouleTextBox.Text);  // Nombre d'équipes par poule
-            int decalage = int.Parse(decalageTextBox.Text) - 1;  // Nombre d'équipes par poule
+            var poulesVisibles = PouleManager.LastGeneratedPoules
+                .Where(p => p.Visible)
+                .ToList();
 
-            // Appeler la méthode pour générer les poules avec les paramètres donnés
-            var poules = TeamManager.GenererPoules(nombrePoules, equipesParPoule, decalage);
-            MatchManager.LastGeneratedPoules = poules;
-
-            // Lier les données au Repeater
-            RepeaterPoules.DataSource = poules;
-            RepeaterPoules.DataBind();
+            rptPoules.DataSource = poulesVisibles;
+            rptPoules.DataBind();
         }
 
-        // Méthode pour obtenir la liste des équipes dans une poule avec leur score
-        protected string GetTeamList(RepeaterItem container)
+        protected void btnGenererPoules_Click(object sender, EventArgs e)
         {
-            // Récupérer la poule à partir de l'élément actuel du Repeater
-            var poule = (Poule)container.DataItem;
+            int nbPoules = int.Parse(txtNbPoules.Text);
+            int equipesParPoule = int.Parse(txtEquipesParPoule.Text);
+            int decalage = int.Parse(txtDecalage.Text) - 1;
 
-            var teamsList = new StringBuilder();
+            PouleManager.GenererPoules(nbPoules, equipesParPoule, decalage);
+            ChargerPoules();
+        }
 
-            foreach (var team in poule.Teams)
+        protected void rptPoules_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
-                teamsList.AppendFormat("<li>{0} - {1} points</li>", team.Name, team.Points);
-            }
+                var poule = (Poule)e.Item.DataItem;
 
-            // Retourner la liste des équipes sous forme de chaîne HTML
-            return teamsList.ToString();
+                var gvEquipes = (GridView)e.Item.FindControl("gvEquipes");
+
+                if (gvEquipes != null && poule.Teams != null)
+                {
+                    gvEquipes.DataSource = poule.Teams;
+                    gvEquipes.DataBind();
+                }
+            }
         }
     }
 }

@@ -7,6 +7,8 @@ namespace GestionTournoi.App_Code
 {
     public static class PouleManager
     {
+        public static List<Poule> LastGeneratedPoules { get; set; } = new List<Poule>();
+
         public static List<Poule> GenererPoules(int nbPoules, int nbEquipesParPoule, int decalage)
         {
             var equipes = TeamManager.GetAllEquipes()
@@ -16,17 +18,26 @@ namespace GestionTournoi.App_Code
 
             var poules = new List<Poule>();
             for (int i = 0; i < nbPoules; i++)
-                poules.Add(new Poule("Poule " + (char)('A' + i)));
+            {
+                poules.Add(new Poule($"Poule {decalage + 1}-{i + 1}"));
+            }
 
             int index = 0;
             foreach (var team in equipes)
             {
                 poules[index].Teams.Add(team);
-                index = (index + decalage) % nbPoules;
+                index = (index + decalage + 1) % nbPoules;
+                if (index % nbPoules == 0)
+                    decalage = (decalage+ 1) * decalage;
+            }
+            foreach (var p in LastGeneratedPoules)
+            {
+                p.Visible = false;
             }
 
+            LastGeneratedPoules.AddRange(poules);
             // Enregistrement dans JSON
-            JsonStorage.SavePoules(poules);
+            JsonStorage.SavePoules(LastGeneratedPoules);
             return poules;
         }
 

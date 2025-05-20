@@ -41,14 +41,14 @@ namespace GestionTournoi
             gvTeams.DataSource = equipes.Select(t => new {
                 t.Id,
                 t.Name,
-                LevelName = TeamLevel.GetLevelName(t.Level)
+                LevelName = TournamentLevel.GetLevelName(t.Level)
             }).ToList();
             gvTeams.DataBind();
         }
 
         private void BindLevels()
         {
-            ddlLevel.DataSource = TeamLevel.GetAllLevels();
+            ddlLevel.DataSource = TournamentLevel.GetAllLevels();
             ddlLevel.DataTextField = "Name";
             ddlLevel.DataValueField = "Value";
             ddlLevel.DataBind();
@@ -60,7 +60,7 @@ namespace GestionTournoi
             {
                 var team = new Team(name, int.Parse(ddlLevel.SelectedValue));
                 //TeamsList.Add(team);
-                TeamManager.AjouterEquipe(team);
+                TeamManager.AddTeam(team);
                 BindGrid();
                 txtTeamName.Text = "";
             }
@@ -109,7 +109,7 @@ namespace GestionTournoi
                     {
                         var team = new Team(name, level);
                         //TeamsList.Add(team); 
-                        TeamManager.AjouterEquipe(team);
+                        TeamManager.AddTeam(team);
                     }
                 }
             }
@@ -130,7 +130,7 @@ namespace GestionTournoi
                         
                         var team = new Team(name, level);
                         //TeamsList.Add(team);
-                        TeamManager.AjouterEquipe(team);
+                        TeamManager.AddTeam(team);
                     }
                 }
             }
