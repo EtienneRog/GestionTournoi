@@ -37,11 +37,12 @@ namespace GestionTournoi
 
         private void BindGrid()
         {
-            var equipes = TeamManager.GetAllEquipes();  // ← chargement JSON
+            var equipes = JsonStorage.LoadTeams();
             gvTeams.DataSource = equipes.Select(t => new {
                 t.Id,
                 t.Name,
-                LevelName = TournamentLevel.GetLevelName(t.Level)
+                LevelName = TournamentLevel.GetLevelName(t.Level),
+                t.Points
             }).ToList();
             gvTeams.DataBind();
         }
@@ -89,6 +90,42 @@ namespace GestionTournoi
                     lblMessage.ForeColor = System.Drawing.Color.Red;
                 }
             }
+        }
+
+
+        protected void gvTeams_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            gvTeams.EditIndex = e.NewEditIndex;
+            BindGrid();
+        }
+
+        protected void gvTeams_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            gvTeams.EditIndex = -1;
+            BindGrid();
+        }
+
+        protected void gvTeams_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            GridViewRow row = gvTeams.Rows[e.RowIndex];
+            string nomEquipe = row.Cells[1].Text.Trim();
+
+            TextBox txtPoints = (TextBox)row.FindControl("txtEditPoints");
+
+            if (txtPoints != null && int.TryParse(txtPoints.Text, out int nouveauxPoints))
+            {
+                var equipes = JsonStorage.LoadTeams();
+                var equipe = equipes.FirstOrDefault(t => t.Name.Equals(nomEquipe, StringComparison.OrdinalIgnoreCase));
+
+                if (equipe != null)
+                {
+                    equipe.Points = nouveauxPoints;
+                    JsonStorage.SaveTeams(equipes);
+                }
+            }
+
+            gvTeams.EditIndex = -1;
+            BindGrid();
         }
 
         private void ImportFromExcel(System.IO.Stream stream)

@@ -31,7 +31,7 @@
     "EquipeA": "Equipe 1-3",
     "EquipeB": "Equipe 1-2",
     "ScoreA": 15,
-    "ScoreB": 12,
+    "ScoreB": 10,
     "PouleNom": "Poule 1-1",
     "Phase": 0
   },
@@ -40,7 +40,7 @@
     "EquipeA": "Equipe 1-3",
     "EquipeB": "Equipe 1-1",
     "ScoreA": 15,
-    "ScoreB": 11,
+    "ScoreB": 4,
     "PouleNom": "Poule 1-1",
     "Phase": 0
   },
@@ -49,7 +49,7 @@
     "EquipeA": "Equipe 1-2",
     "EquipeB": "Equipe 1-1",
     "ScoreA": 15,
-    "ScoreB": 10,
+    "ScoreB": 4,
     "PouleNom": "Poule 1-1",
     "Phase": 0
   }

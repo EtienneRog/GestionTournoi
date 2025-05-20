@@ -47,7 +47,7 @@ namespace GestionTournoi.App_Code
         public static void UpdateScore(Matchs match, int scoreA, int scoreB)
         {
 
-            if (match == null || (match.ScoreA.HasValue && !match.ScoreB.HasValue))
+            if (match == null || (match.ScoreA.HasValue && match.ScoreB.HasValue))
                 return;
 
             match.ScoreA = scoreA;
