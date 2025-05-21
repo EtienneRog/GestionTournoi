@@ -20,15 +20,15 @@ namespace GestionTournoi.App_Code
         public string EquipeB { get; set; }
         public int? ScoreA { get; set; }
         public int? ScoreB { get; set; }
-        public string PouleNom { get; set; }  // Pour identifier la poule
-        public MatchsPhase Phase { get; set; } // <- nouvelle propriété
+        public string PhaseNom { get; set; }  // Pour identifier la poule
+        public MatchsPhase Phase { get; set; } 
 
-        public Matchs(string equipeA, string equipeB, string pouleNom, MatchsPhase phase)
+        public Matchs(string equipeA, string equipeB, string phaseNom, MatchsPhase phase)
         {
             Id = CompteurId++;
             EquipeA = equipeA;
             EquipeB = equipeB;
-            PouleNom = pouleNom;
+            PhaseNom = phaseNom;
             Phase = phase;
         }
     }

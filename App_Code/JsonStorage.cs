@@ -11,6 +11,7 @@ namespace GestionTournoi.App_Code
         private static string MatchsFile => HttpContext.Current.Server.MapPath("~/App_Data/matchs.json");
         private static string TeamsFile => HttpContext.Current.Server.MapPath("~/App_Data/teams.json");
         private static string PoulesFile => HttpContext.Current.Server.MapPath("~/App_Data/poules.json");
+        private static string EliminatoiresFile => HttpContext.Current.Server.MapPath("~/App_Data/eliminatoires.json");
 
         // === MATCHS ===
         public static List<Matchs> LoadMatchs()
@@ -55,6 +56,22 @@ namespace GestionTournoi.App_Code
         {
             var json = JsonConvert.SerializeObject(poules, Formatting.Indented);
             File.WriteAllText(PoulesFile, json);
+        }
+
+        // === ELIMINATOIRES ===
+        public static List<Eliminatoire> LoadEliminatoires()
+        {
+            if (!File.Exists(EliminatoiresFile)) return new List<Eliminatoire>();
+            var json = File.ReadAllText(EliminatoiresFile);
+            List<Eliminatoire> listEliminatoires = JsonConvert.DeserializeObject<List<Eliminatoire>>(json) ?? new List<Eliminatoire>();
+            EliminatoireManager.LastGeneratedEliminatoires = listEliminatoires;
+            return listEliminatoires;
+        }
+
+        public static void SaveEliminatoires(List<Eliminatoire> eliminatoires)
+        {
+            var json = JsonConvert.SerializeObject(eliminatoires, Formatting.Indented);
+            File.WriteAllText(EliminatoiresFile, json);
         }
     }
 }

@@ -8,13 +8,12 @@ namespace GestionTournoi.App_Code
 {
     public class MatchsManager
     {
-
         public static List<Matchs> GetMatchsByPoule(string nomPoule)
         {
             var allMatches = JsonStorage.LoadMatchs();
 
             var matchsExistants = allMatches
-                .Where(m => m.PouleNom.Equals(nomPoule, StringComparison.OrdinalIgnoreCase))
+                .Where(m => m.PhaseNom.Equals(nomPoule, StringComparison.OrdinalIgnoreCase))
                 .ToList();
 
             if (matchsExistants.Any())
@@ -107,7 +106,7 @@ namespace GestionTournoi.App_Code
             var allMatchs = JsonStorage.LoadMatchs();
 
             var existants = allMatchs
-                .Where(m => m.PouleNom.Equals(poule.Name, StringComparison.OrdinalIgnoreCase))
+                .Where(m => m.PhaseNom.Equals(poule.Name, StringComparison.OrdinalIgnoreCase))
                 .ToList();
 
             if (existants.Count > 0)

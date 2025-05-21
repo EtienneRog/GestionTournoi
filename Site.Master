@@ -37,6 +37,7 @@
             <!-- Liens de navigation -->
             <a href="TeamsPage.aspx" class="<%# Request.Url.AbsolutePath.EndsWith("TeamsPage.aspx") ? "active" : "" %>">Équipes</a>
             <a href="PoulesPage.aspx" class="<%# Request.Url.AbsolutePath.EndsWith("PoulesPage.aspx") ? "active" : "" %>">Poules</a>
+            <a href="EliminatoirePage.aspx" class="<%# Request.Url.AbsolutePath.EndsWith("EliminatoirePage.aspx") ? "active" : "" %>">Eliminatoire</a>
         </div>
 
         <asp:ContentPlaceHolder ID="MainContent" runat="server">

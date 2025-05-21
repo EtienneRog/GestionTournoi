@@ -26,6 +26,18 @@ namespace GestionTournoi
             }
         }
 
+        private string SortColumn
+        {
+            get => ViewState["SortColumn"] as string ?? "Id";
+            set => ViewState["SortColumn"] = value;
+        }
+
+        private SortDirection SortDirection
+        {
+            get => (SortDirection)(ViewState["SortDirection"] ?? SortDirection.Descending);
+            set => ViewState["SortDirection"] = value;
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -38,12 +50,60 @@ namespace GestionTournoi
         private void BindGrid()
         {
             var equipes = JsonStorage.LoadTeams();
-            gvTeams.DataSource = equipes.Select(t => new {
-                t.Id,
-                t.Name,
-                LevelName = TournamentLevel.GetLevelName(t.Level),
-                t.Points
-            }).ToList();
+
+            // Tri
+            switch (SortColumn)
+            {
+                case "Name":
+                    equipes = SortDirection == SortDirection.Ascending
+                        ? equipes.OrderBy(t => t.Name).ToList()
+                        : equipes.OrderByDescending(t => t.Name).ToList();
+                    break;
+                case "Level":
+                    equipes = SortDirection == SortDirection.Ascending
+                        ? equipes.OrderBy(t => t.Level).ToList()
+                        : equipes.OrderByDescending(t => t.Level).ToList();
+                    break;
+                case "Points":
+                    equipes = SortDirection == SortDirection.Ascending
+                        ? equipes.OrderBy(t => t.Points).ToList()
+                        : equipes.OrderByDescending(t => t.Points).ToList();
+                    break;
+                default:
+                    equipes = SortDirection == SortDirection.Ascending
+                        ? equipes.OrderBy(t => t.Id).ToList()
+                        : equipes.OrderByDescending(t => t.Id).ToList();
+                    break;
+            }
+
+            // Ajout des flèches dans l'entête
+            foreach (DataControlField col in gvTeams.Columns)
+            {
+                if (!string.IsNullOrEmpty(col.SortExpression))
+                {
+                    string headerText = col.SortExpression;
+
+                    switch (col.SortExpression)
+                    {
+                        case "Id": headerText = "ID"; break;
+                        case "Name": headerText = "Nom de l'équipe"; break;
+                        case "Level": headerText = "Niveau"; break;
+                        case "Points": headerText = "Points"; break;
+                    }
+
+                    if (col.SortExpression == SortColumn)
+                    {
+                        string arrow = SortDirection == SortDirection.Ascending ? " ▲" : " ▼";
+                        col.HeaderText = headerText + arrow;
+                    }
+                    else
+                    {
+                        col.HeaderText = headerText;
+                    }
+                }
+            }
+
+            gvTeams.DataSource = equipes;
             gvTeams.DataBind();
         }
 
@@ -92,6 +152,21 @@ namespace GestionTournoi
             }
         }
 
+        protected void gvTeams_Sorting(object sender, GridViewSortEventArgs e)
+        {
+            if (e.SortExpression == SortColumn)
+            {
+                // Inverser le sens de tri
+                SortDirection = SortDirection == SortDirection.Ascending ? SortDirection.Descending : SortDirection.Ascending;
+            }
+            else
+            {
+                SortColumn = e.SortExpression;
+                SortDirection = SortDirection.Ascending;
+            }
+
+            BindGrid();
+        }
 
         protected void gvTeams_RowEditing(object sender, GridViewEditEventArgs e)
         {
@@ -107,15 +182,14 @@ namespace GestionTournoi
 
         protected void gvTeams_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
+            int equipeId = (int)gvTeams.DataKeys[e.RowIndex].Value;
             GridViewRow row = gvTeams.Rows[e.RowIndex];
-            string nomEquipe = row.Cells[1].Text.Trim();
-
             TextBox txtPoints = (TextBox)row.FindControl("txtEditPoints");
 
             if (txtPoints != null && int.TryParse(txtPoints.Text, out int nouveauxPoints))
             {
                 var equipes = JsonStorage.LoadTeams();
-                var equipe = equipes.FirstOrDefault(t => t.Name.Equals(nomEquipe, StringComparison.OrdinalIgnoreCase));
+                var equipe = equipes.FirstOrDefault(t => t.Id == equipeId);
 
                 if (equipe != null)
                 {

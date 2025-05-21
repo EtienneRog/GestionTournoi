@@ -5,7 +5,7 @@
     "EquipeB": "Equipe 2-2",
     "ScoreA": 15,
     "ScoreB": 11,
-    "PouleNom": "Poule 1-2",
+    "PhaseNom": "Poule 1-2",
     "Phase": 0
   },
   {
@@ -14,7 +14,7 @@
     "EquipeB": "Equipe 2-1",
     "ScoreA": 15,
     "ScoreB": 9,
-    "PouleNom": "Poule 1-2",
+    "PhaseNom": "Poule 1-2",
     "Phase": 0
   },
   {
@@ -23,7 +23,7 @@
     "EquipeB": "Equipe 2-1",
     "ScoreA": 13,
     "ScoreB": 15,
-    "PouleNom": "Poule 1-2",
+    "PhaseNom": "Poule 1-2",
     "Phase": 0
   },
   {
@@ -32,7 +32,7 @@
     "EquipeB": "Equipe 1-2",
     "ScoreA": 15,
     "ScoreB": 10,
-    "PouleNom": "Poule 1-1",
+    "PhaseNom": "Poule 1-1",
     "Phase": 0
   },
   {
@@ -41,7 +41,7 @@
     "EquipeB": "Equipe 1-1",
     "ScoreA": 15,
     "ScoreB": 4,
-    "PouleNom": "Poule 1-1",
+    "PhaseNom": "Poule 1-1",
     "Phase": 0
   },
   {
@@ -50,7 +50,7 @@
     "EquipeB": "Equipe 1-1",
     "ScoreA": 15,
     "ScoreB": 4,
-    "PouleNom": "Poule 1-1",
+    "PhaseNom": "Poule 1-1",
     "Phase": 0
   }
 ]

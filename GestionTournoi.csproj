@@ -154,6 +154,7 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
+    <Content Include="EliminatoirePage.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="PoulesPage.aspx" />
@@ -200,6 +201,8 @@
     <Content Include="Bundle.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Code\Eliminatoire.cs" />
+    <Compile Include="App_Code\EliminatoireManager.cs" />
     <Compile Include="App_Code\JsonStorage.cs" />
     <Compile Include="App_Code\Matchs.cs" />
     <Compile Include="App_Code\MatchsManager.cs" />
@@ -230,6 +233,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EliminatoirePage.aspx.cs">
+      <DependentUpon>EliminatoirePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EliminatoirePage.aspx.designer.cs">
+      <DependentUpon>EliminatoirePage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

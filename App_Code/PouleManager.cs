@@ -25,10 +25,10 @@ namespace GestionTournoi.App_Code
             int index = 0;
             foreach (var team in equipes)
             {
-                poules[index].Teams.Add(team);
-                index = (index + decalage + 1) % nbPoules;
+                poules[(index + decalage) % nbPoules].Teams.Add(team);
+                index = (index + 1) % nbPoules;
                 if (index % nbPoules == 0)
-                    decalage = (decalage+ 1) * decalage;
+                    decalage = (decalage + 1) * decalage;
             }
             foreach (var p in LastGeneratedPoules)
             {

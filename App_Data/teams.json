@@ -17,14 +17,14 @@
     "Id": 4,
     "Name": "Equipe 3-3",
     "Level": 3,
-    "Points": 0,
+    "Points": 6,
     "LevelName": "Nationale"
   },
   {
     "Id": 7,
     "Name": "Equipe 4-3",
     "Level": 3,
-    "Points": 0,
+    "Points": 14,
     "LevelName": "Nationale"
   },
   {
@@ -45,7 +45,7 @@
     "Id": 22,
     "Name": "Equipe 3-2",
     "Level": 2,
-    "Points": 0,
+    "Points": 25,
     "LevelName": "Régionale"
   },
   {

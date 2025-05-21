@@ -17,19 +17,20 @@
     <br /><br /><br />
 
     <h3>Liste des équipes</h3>
-    <asp:GridView ID="gvTeams" runat="server" AutoGenerateColumns="false" 
-        OnRowEditing="gvTeams_RowEditing" OnRowUpdating="gvTeams_RowUpdating" OnRowCancelingEdit="gvTeams_RowCancelingEdit">
+    <asp:GridView ID="gvTeams" runat="server" AutoGenerateColumns="false" DataKeyNames="Id" AllowSorting="True"
+    OnSorting="gvTeams_Sorting" OnRowEditing="gvTeams_RowEditing" OnRowUpdating="gvTeams_RowUpdating" OnRowCancelingEdit="gvTeams_RowCancelingEdit">
         <Columns>
-            <asp:BoundField DataField="Id" HeaderText="ID" />
-            <asp:BoundField DataField="Name" HeaderText="Nom de l'équipe" />
-            <asp:BoundField DataField="LevelName" HeaderText="Niveau" /><asp:TemplateField HeaderText="Points">
-    <ItemTemplate>
-        <asp:Label ID="lblPoints" runat="server" Text='<%# Bind("Points") %>'></asp:Label>
-    </ItemTemplate>
-    <EditItemTemplate>
-        <asp:TextBox ID="txtEditPoints" runat="server" Text='<%# Bind("Points") %>' Width="60"></asp:TextBox>
-    </EditItemTemplate>
-</asp:TemplateField>
+            <asp:BoundField DataField="Id" HeaderText="ID" SortExpression="Id" />
+            <asp:BoundField DataField="Name" HeaderText="Nom de l'équipe" SortExpression="Name" />
+            <asp:BoundField DataField="LevelName" HeaderText="Niveau" SortExpression="Level"/>
+            <asp:TemplateField HeaderText="Points" SortExpression="Points">
+            <ItemTemplate>
+                <asp:Label ID="lblPoints" runat="server" Text='<%# Bind("Points") %>'></asp:Label>
+            </ItemTemplate>
+            <EditItemTemplate>
+                <asp:TextBox ID="txtEditPoints" runat="server" Text='<%# Bind("Points") %>' Width="60"></asp:TextBox>
+            </EditItemTemplate>
+        </asp:TemplateField>
             <asp:CommandField ShowEditButton="True" />
         </Columns>
     </asp:GridView>
