@@ -17,7 +17,7 @@ namespace GestionTournoi.App_Code
             if (allTeams.Count < nombreEquipes)
                 throw new InvalidOperationException("Pas assez d'équipes pour générer cette phase.");
 
-            if (triType.Equals("faible", StringComparison.OrdinalIgnoreCase))
+            if (triType.Equals("Consolante", StringComparison.OrdinalIgnoreCase))
             {
                 selection = allTeams
                     .OrderBy(t => t.Points)

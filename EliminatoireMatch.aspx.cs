@@ -15,7 +15,7 @@ namespace GestionTournoi
         {
             if (!IsPostBack)
             {
-                if (EliminatoireNom.IndexOf("fortes", StringComparison.OrdinalIgnoreCase) >= 0)
+                if (EliminatoireNom.IndexOf("Principale", StringComparison.OrdinalIgnoreCase) >= 0)
                 {
                     litElimNom.Text = "Principale";
                 }

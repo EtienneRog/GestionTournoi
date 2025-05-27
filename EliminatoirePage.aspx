@@ -12,8 +12,8 @@
     <br />
     Choisir les équipes :
     <asp:RadioButtonList ID="rblTriEquipes" runat="server" RepeatDirection="Horizontal">
-        <asp:ListItem Text="Les plus fortes" Value="fortes" Selected="True" />
-        <asp:ListItem Text="Les plus faibles" Value="faibles" />
+        <asp:ListItem Text="Principale" Value="Principale" Selected="True" />
+        <asp:ListItem Text="Consolante" Value="Consolante" />
     </asp:RadioButtonList>
 
     <br />
