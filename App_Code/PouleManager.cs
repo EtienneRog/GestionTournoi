@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Ajax.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -23,12 +24,13 @@ namespace GestionTournoi.App_Code
             }
 
             int index = 0;
+            int tour = 0;
             foreach (var team in equipes)
             {
-                poules[(index + decalage) % nbPoules].Teams.Add(team);
+                poules[(index + tour) % nbPoules].Teams.Add(team);
                 index = (index + 1) % nbPoules;
                 if (index % nbPoules == 0)
-                    decalage = (decalage + 1) * decalage;
+                    tour = tour + decalage;
             }
             foreach (var p in LastGeneratedPoules)
             {
