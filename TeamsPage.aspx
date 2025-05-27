@@ -7,30 +7,38 @@
     <asp:DropDownList ID="ddlLevel" runat="server"></asp:DropDownList>
     <br />
     <asp:Button ID="btnAddTeam" runat="server" Text="Ajouter" OnClick="BtnAddTeam_Click" />
-    <br /><br />
+    <br />
+    <br />
     <h2>Importer depuis un fichier</h2>
     <asp:FileUpload ID="fileUpload" runat="server" />
     <br />
     <asp:Button ID="btnImport" runat="server" Text="Importer" OnClick="BtnImport_Click" />
     <br />
     <asp:Label ID="lblMessage" runat="server" ForeColor="Red"></asp:Label>
-    <br /><br /><br />
+    <br />
+    <br />
+    <br />
+    <asp:Button ID="btnResetData" runat="server" Text="Réinitialiser les données JSON" OnClick="btnResetData_Click" CssClass="btn btn-danger" />
+<asp:Label ID="lblResetMessage" runat="server" ForeColor="Red" />
+    <br />
+    <br />
 
     <h3>Liste des équipes</h3>
     <asp:GridView ID="gvTeams" runat="server" AutoGenerateColumns="false" DataKeyNames="Id" AllowSorting="True"
-    OnSorting="gvTeams_Sorting" OnRowEditing="gvTeams_RowEditing" OnRowUpdating="gvTeams_RowUpdating" OnRowCancelingEdit="gvTeams_RowCancelingEdit">
+        OnSorting="gvTeams_Sorting" OnRowEditing="gvTeams_RowEditing" OnRowUpdating="gvTeams_RowUpdating" OnRowCancelingEdit="gvTeams_RowCancelingEdit">
         <Columns>
             <asp:BoundField DataField="Id" HeaderText="ID" SortExpression="Id" />
             <asp:BoundField DataField="Name" HeaderText="Nom de l'équipe" SortExpression="Name" />
-            <asp:BoundField DataField="LevelName" HeaderText="Niveau" SortExpression="Level"/>
+            <asp:BoundField DataField="LevelName" HeaderText="Niveau" SortExpression="Level" />
             <asp:TemplateField HeaderText="Points" SortExpression="Points">
-            <ItemTemplate>
-                <asp:Label ID="lblPoints" runat="server" Text='<%# Bind("Points") %>'></asp:Label>
-            </ItemTemplate>
-            <EditItemTemplate>
-                <asp:TextBox ID="txtEditPoints" runat="server" Text='<%# Bind("Points") %>' Width="60"></asp:TextBox>
-            </EditItemTemplate>
-        </asp:TemplateField>
+                <ItemTemplate>
+                    <asp:Label ID="lblPoints" runat="server" Text='<%# Bind("Points") %>'></asp:Label>
+                </ItemTemplate>
+                <EditItemTemplate>
+                    <asp:TextBox ID="txtEditPoints" runat="server" Text='<%# Bind("Points") %>' Width="60"></asp:TextBox>
+                </EditItemTemplate>
+            </asp:TemplateField>
+            <asp:BoundField DataField="PointsDtl" HeaderText="Pts Ecart" SortExpression="Ecart" />
             <asp:CommandField ShowEditButton="True" />
         </Columns>
     </asp:GridView>

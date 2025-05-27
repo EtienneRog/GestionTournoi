@@ -11,21 +11,6 @@ namespace GestionTournoi
 {
     public partial class TeamsPage : System.Web.UI.Page
     {
-        // Stockage temporaire en session
-        private List<Team> TeamsList
-        {
-            get
-            {
-                if (Session["Teams"] == null)
-                    Session["Teams"] = new List<Team>();
-                return (List<Team>)Session["Teams"];
-            }
-            set
-            {
-                Session["Teams"] = value;
-            }
-        }
-
         private string SortColumn
         {
             get => ViewState["SortColumn"] as string ?? "Id";
@@ -69,6 +54,12 @@ namespace GestionTournoi
                         ? equipes.OrderBy(t => t.Points).ToList()
                         : equipes.OrderByDescending(t => t.Points).ToList();
                     break;
+
+                case "Ecart":
+                    equipes = SortDirection == SortDirection.Ascending
+                        ? equipes.OrderBy(t => t.PointsDtl).ToList()
+                        : equipes.OrderByDescending(t => t.Points).ToList();
+                    break;
                 default:
                     equipes = SortDirection == SortDirection.Ascending
                         ? equipes.OrderBy(t => t.Id).ToList()
@@ -89,6 +80,7 @@ namespace GestionTournoi
                         case "Name": headerText = "Nom de l'équipe"; break;
                         case "Level": headerText = "Niveau"; break;
                         case "Points": headerText = "Points"; break;
+                        case "Ecart": headerText = "Ecart"; break;
                     }
 
                     if (col.SortExpression == SortColumn)
@@ -245,6 +237,39 @@ namespace GestionTournoi
                         TeamManager.AddTeam(team);
                     }
                 }
+            }
+        }
+        protected void btnResetData_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Supprime les fichiers JSON si existants
+                string basePath = Server.MapPath("~/App_Data/");
+
+                string[] jsonFiles = new string[]
+                {
+            "teams.json",
+            "matchs.json",
+            "poules.json",
+            "eliminatoires.json"
+                };
+
+                foreach (var fileName in jsonFiles)
+                {
+                    string path = System.IO.Path.Combine(basePath, fileName);
+                    if (System.IO.File.Exists(path))
+                        System.IO.File.Delete(path);
+                }
+
+                lblResetMessage.ForeColor = System.Drawing.Color.Green;
+                lblResetMessage.Text = "Tous les fichiers JSON ont été réinitialisés avec succès.";
+
+                BindGrid(); // Recharge la grille vide
+            }
+            catch (Exception ex)
+            {
+                lblResetMessage.ForeColor = System.Drawing.Color.Red;
+                lblResetMessage.Text = "Erreur lors de la réinitialisation : " + ex.Message;
             }
         }
 

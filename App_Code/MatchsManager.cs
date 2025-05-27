@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OfficeOpenXml.Filter;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -76,10 +77,14 @@ namespace GestionTournoi.App_Code
             {
                 equipeA.Points += 3;
                 equipeB.Points += 3;
+                TeamManager.SynchroniserEquipes(equipeA);
+                TeamManager.SynchroniserEquipes(equipeB);
                 JsonStorage.UpdateTeams(allTeams);
                 return;
             }
 
+            gagnant.PointsDtl += ecart;
+            perdant.PointsDtl -= ecart;
             gagnant.Points += 5;
 
             if (ecart < 3)
@@ -90,7 +95,8 @@ namespace GestionTournoi.App_Code
                 perdant.Points += 2;
             else
                 perdant.Points += 1;
-
+            TeamManager.SynchroniserEquipes(gagnant);
+            TeamManager.SynchroniserEquipes(perdant);
             JsonStorage.UpdateTeams(allTeams);
         }
 
