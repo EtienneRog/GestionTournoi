@@ -14,13 +14,14 @@ namespace GestionTournoi.App_Code
             List<Team> allTeams = JsonStorage.LoadTeams();
             List<Team> selection;
             // Vérification : pas assez d'équipes
-            if (allTeams.Count <= nombreEquipes)
+            if (allTeams.Count < nombreEquipes)
                 throw new InvalidOperationException("Pas assez d'équipes pour générer cette phase.");
 
             if (triType.Equals("faible", StringComparison.OrdinalIgnoreCase))
             {
                 selection = allTeams
                     .OrderBy(t => t.Points)
+                    .ThenBy(t => t.PointsDtl)
                     .Take(nombreEquipes)
                     .ToList();
             }
@@ -29,6 +30,7 @@ namespace GestionTournoi.App_Code
                 // Valeur par défaut : on prend les plus forts
                 selection = allTeams
                     .OrderByDescending(t => t.Points)
+                    .ThenByDescending(t => t.PointsDtl)
                     .Take(nombreEquipes)
                     .ToList();
             }
@@ -85,12 +87,17 @@ namespace GestionTournoi.App_Code
             }
 
             var nouveauxMatchs = new List<Matchs>();
-            for (int i = 0; i < vainqueurs.Count; i += 2)
+            int n = vainqueurs.Count;
+            EliminatoirePhase nouvellePhase = (EliminatoirePhase)(n);
+            for (int i = 0; i < n / 2; i++)
             {
-                var m = new Matchs(vainqueurs[i], vainqueurs[i + 1], eliminatoire.Name, MatchsPhase.Elimination, (EliminatoirePhase)(vainqueurs.Count)); //Rajouter  la phase eliminatoire
-                nouveauxMatchs.Add(m);
+                var equipeA = vainqueurs[i];
+                var equipeB = vainqueurs[n - 1 - i];
+
+                var nouveauMatch = new Matchs(equipeA, equipeB, eliminatoire.Name, MatchsPhase.Elimination, nouvellePhase);
+                nouveauxMatchs.Add(nouveauMatch);
             }
-            eliminatoire.Etape = (EliminatoirePhase)vainqueurs.Count;
+            eliminatoire.Etape = nouvellePhase;
             JsonStorage.UpdateEliminatoires(eliminatoires);
             JsonStorage.SaveMatchs(nouveauxMatchs);
         }

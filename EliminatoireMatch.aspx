@@ -1,7 +1,8 @@
 ﻿<%@ Page Title="Phase Éliminatoire" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EliminatoireMatch.aspx.cs" Inherits="GestionTournoi.EliminatoireMatch" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>Matchs de la phase éliminatoire</h2>
+    <h2>Matchs de la Poule :
+        <asp:Literal ID="litElimNom" runat="server" /></h2>
 
     <asp:Label ID="lblMessage" runat="server" ForeColor="Red" />
 

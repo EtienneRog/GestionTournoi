@@ -15,6 +15,14 @@ namespace GestionTournoi
         {
             if (!IsPostBack)
             {
+                if (EliminatoireNom.IndexOf("fortes", StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    litElimNom.Text = "Principale";
+                }
+                else
+                {
+                    litElimNom.Text = "Consolante";
+                }
                 ChargerMatchsEliminatoires();
             }
         }

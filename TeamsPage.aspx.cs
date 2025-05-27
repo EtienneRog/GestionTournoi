@@ -58,7 +58,7 @@ namespace GestionTournoi
                 case "Ecart":
                     equipes = SortDirection == SortDirection.Ascending
                         ? equipes.OrderBy(t => t.PointsDtl).ToList()
-                        : equipes.OrderByDescending(t => t.Points).ToList();
+                        : equipes.OrderByDescending(t => t.PointsDtl).ToList();
                     break;
                 default:
                     equipes = SortDirection == SortDirection.Ascending
