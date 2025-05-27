@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Web;
-using Newtonsoft.Json;
+using System.Web.Security;
 
 namespace GestionTournoi.App_Code
 {
@@ -16,7 +17,8 @@ namespace GestionTournoi.App_Code
         // === MATCHS ===
         public static List<Matchs> LoadMatchs()
         {
-            LoadPoules();
+            LoadPoules(); 
+            LoadEliminatoires();
             if (!File.Exists(MatchsFile)) return new List<Matchs>();
             var json = File.ReadAllText(MatchsFile);
             return JsonConvert.DeserializeObject<List<Matchs>>(json) ?? new List<Matchs>();
@@ -24,10 +26,17 @@ namespace GestionTournoi.App_Code
 
         public static void SaveMatchs(List<Matchs> matchs)
         {
+            List<Matchs> storedMatchs = LoadMatchs();
+            storedMatchs.AddRange(matchs);
+            var json = JsonConvert.SerializeObject(storedMatchs, Formatting.Indented);
+            File.WriteAllText(MatchsFile, json);
+        }
+        public static void UpdateMatchs(List<Matchs> matchs)
+        {
             var json = JsonConvert.SerializeObject(matchs, Formatting.Indented);
             File.WriteAllText(MatchsFile, json);
         }
-
+      
         // === TEAMS ===
         public static List<Team> LoadTeams()
         {
@@ -37,6 +46,22 @@ namespace GestionTournoi.App_Code
         }
 
         public static void SaveTeams(List<Team> teams)
+        {
+            List<Team> storedTeams = LoadTeams();
+            storedTeams.AddRange(teams);
+            var json = JsonConvert.SerializeObject(storedTeams, Formatting.Indented);
+            File.WriteAllText(TeamsFile, json);
+        }
+
+        public static void SaveTeams(Team team)
+        {
+            List<Team> storedTeams = LoadTeams();
+            storedTeams.Add(team);
+            var json = JsonConvert.SerializeObject(storedTeams, Formatting.Indented);
+            File.WriteAllText(TeamsFile, json);
+        }
+
+        public static void UpdateTeams(List<Team> teams)
         {
             var json = JsonConvert.SerializeObject(teams, Formatting.Indented);
             File.WriteAllText(TeamsFile, json);
@@ -48,11 +73,18 @@ namespace GestionTournoi.App_Code
             if (!File.Exists(PoulesFile)) return new List<Poule>();
             var json = File.ReadAllText(PoulesFile);
             List<Poule> listPoules = JsonConvert.DeserializeObject<List<Poule>>(json) ?? new List<Poule>();
-            PouleManager.LastGeneratedPoules = listPoules;
             return listPoules;
         }
 
         public static void SavePoules(List<Poule> poules)
+        {
+            List<Poule> storedPoule = LoadPoules();
+            storedPoule.AddRange(poules);
+            var json = JsonConvert.SerializeObject(storedPoule, Formatting.Indented);
+            File.WriteAllText(PoulesFile, json);
+        }
+
+        public static void UpdatePoules(List<Poule> poules)
         {
             var json = JsonConvert.SerializeObject(poules, Formatting.Indented);
             File.WriteAllText(PoulesFile, json);
@@ -64,11 +96,26 @@ namespace GestionTournoi.App_Code
             if (!File.Exists(EliminatoiresFile)) return new List<Eliminatoire>();
             var json = File.ReadAllText(EliminatoiresFile);
             List<Eliminatoire> listEliminatoires = JsonConvert.DeserializeObject<List<Eliminatoire>>(json) ?? new List<Eliminatoire>();
-            EliminatoireManager.LastGeneratedEliminatoires = listEliminatoires;
             return listEliminatoires;
         }
 
         public static void SaveEliminatoires(List<Eliminatoire> eliminatoires)
+        {
+            List<Eliminatoire> storedEliminatoire = LoadEliminatoires();
+            storedEliminatoire.AddRange(eliminatoires);
+            var json = JsonConvert.SerializeObject(storedEliminatoire, Formatting.Indented);
+            File.WriteAllText(EliminatoiresFile, json);
+        }
+
+        public static void SaveEliminatoires(Eliminatoire eliminatoire)
+        {
+            List<Eliminatoire> storedEliminatoire = LoadEliminatoires();
+            storedEliminatoire.Add(eliminatoire);
+            var json = JsonConvert.SerializeObject(storedEliminatoire, Formatting.Indented);
+            File.WriteAllText(EliminatoiresFile, json);
+        }
+
+        public static void UpdateEliminatoires(List<Eliminatoire> eliminatoires)
         {
             var json = JsonConvert.SerializeObject(eliminatoires, Formatting.Indented);
             File.WriteAllText(EliminatoiresFile, json);

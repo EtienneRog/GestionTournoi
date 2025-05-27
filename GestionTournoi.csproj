@@ -154,6 +154,7 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
+    <Content Include="EliminatoireMatch.aspx" />
     <Content Include="EliminatoirePage.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -201,7 +202,6 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="TeamsPage.aspx" />
-    <Content Include="ClassDiagram1.cd" />
     <Content Include="PouleMatch.aspx" />
     <Content Include=".editorconfig" />
     <Content Include="Site.Master" />
@@ -262,6 +262,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EliminatoireMatch.aspx.cs">
+      <DependentUpon>EliminatoireMatch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EliminatoireMatch.aspx.designer.cs">
+      <DependentUpon>EliminatoireMatch.aspx</DependentUpon>
     </Compile>
     <Compile Include="EliminatoirePage.aspx.cs">
       <DependentUpon>EliminatoirePage.aspx</DependentUpon>

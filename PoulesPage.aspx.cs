@@ -20,8 +20,9 @@ namespace GestionTournoi
 
         private void ChargerPoules()
         {
-            var poulesVisibles = PouleManager.LastGeneratedPoules
-                .Where(p => p.Visible)
+            JsonStorage.LoadPoules();
+            var poulesVisibles = JsonStorage.LoadPoules()
+                //.Where(p => p.Visible)
                 .ToList();
 
             rptPoules.DataSource = poulesVisibles;

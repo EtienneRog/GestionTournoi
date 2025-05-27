@@ -19,7 +19,7 @@ namespace GestionTournoi.App_Code
             if (matchsExistants.Any())
                 return matchsExistants;
 
-            Poule poule = PouleManager.LastGeneratedPoules
+            Poule poule = JsonStorage.LoadPoules()
                           .FirstOrDefault(p => p.Name.Equals(nomPoule, StringComparison.OrdinalIgnoreCase));
             var teams = poule.Teams
                 .GroupBy(t => t.Name)
@@ -37,8 +37,7 @@ namespace GestionTournoi.App_Code
                 }
             }
 
-            allMatches.AddRange(nouveauxMatchs);
-            JsonStorage.SaveMatchs(allMatches);
+            JsonStorage.SaveMatchs(nouveauxMatchs);
 
             return nouveauxMatchs;
         }
@@ -77,7 +76,7 @@ namespace GestionTournoi.App_Code
             {
                 equipeA.Points += 3;
                 equipeB.Points += 3;
-                JsonStorage.SaveTeams(allTeams);
+                JsonStorage.UpdateTeams(allTeams);
                 return;
             }
 
@@ -92,7 +91,7 @@ namespace GestionTournoi.App_Code
             else
                 perdant.Points += 1;
 
-            JsonStorage.SaveTeams(allTeams);
+            JsonStorage.UpdateTeams(allTeams);
         }
 
 
@@ -113,8 +112,7 @@ namespace GestionTournoi.App_Code
                 return existants;
 
             var nouveaux = GetMatchsByPoule(poule.Name);
-            allMatchs.AddRange(nouveaux);
-            JsonStorage.SaveMatchs(allMatchs);
+            JsonStorage.SaveMatchs(nouveaux);
 
             return nouveaux;
         }

@@ -194,7 +194,8 @@ namespace GestionTournoi
                 if (equipe != null)
                 {
                     equipe.Points = nouveauxPoints;
-                    JsonStorage.SaveTeams(equipes);
+                    TeamManager.SynchroniserEquipes(equipe);
+                    JsonStorage.UpdateTeams(equipes);
                 }
             }
 

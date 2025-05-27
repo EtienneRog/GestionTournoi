@@ -1,6 +1,7 @@
 ﻿using GestionTournoi.App_Code;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web.UI.WebControls;
@@ -10,17 +11,17 @@ namespace GestionTournoi
     public partial class PouleMatch : System.Web.UI.Page
     {
         private string PouleNom => Request.QueryString["poule"];
-        private List<Matchs> Matchs
+        /*private List<Matchs> Matchs
         {
             get => ViewState["Matchs"] as List<Matchs>;
             set => ViewState["Matchs"] = value;
-        }
+        }*/
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 litPouleNom.Text = PouleNom;
-                Matchs = JsonStorage.LoadMatchs();
+                //Matchs = JsonStorage.LoadMatchs();
                 ChargerMatchs();
             }
         }
@@ -34,6 +35,7 @@ namespace GestionTournoi
 
         protected void btnSaveAll_Click(object sender, EventArgs e)
         {
+            var matchs = JsonStorage.LoadMatchs();
             foreach (GridViewRow row in gvMatchs.Rows)
             {
                 var lblEquipeA = (Label)row.FindControl("lblEquipeA");
@@ -45,8 +47,8 @@ namespace GestionTournoi
 
                 if (int.TryParse(strScoreA, out int scoreA) && int.TryParse(strScoreB, out int scoreB))
                 {
-                    var match = Matchs.FirstOrDefault(m =>
-                        m.EquipeA == equipeA && m.EquipeB == equipeB);
+                    var match = matchs.FirstOrDefault(m =>
+                        m.EquipeA == equipeA && m.EquipeB == equipeB && m.Phase == MatchsPhase.Poule);
                     if (match != null)
                     {
                         MatchsManager.UpdateScore(match, scoreA, scoreB);
@@ -54,7 +56,7 @@ namespace GestionTournoi
                 }
             }
 
-            JsonStorage.SaveMatchs(Matchs);
+            JsonStorage.UpdateMatchs(matchs);
         }
     }
 }

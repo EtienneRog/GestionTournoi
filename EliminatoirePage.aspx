@@ -26,9 +26,15 @@
 
     <asp:Repeater ID="rptPhases" runat="server">
         <ItemTemplate>
-            <div>
+            <div style="margin-bottom: 10px;">
                 <strong>Phase :</strong> <%# Eval("Name") %> — 
-            <em>(<%# Eval("Teams.Count") %> équipes)</em>
+        <em>(<%# Eval("Teams.Count") %> équipes)</em>
+                |
+        <asp:HyperLink
+            NavigateUrl='<%# "EliminatoireMatch.aspx?phase=" + Server.UrlEncode(Eval("Name").ToString()) %>'
+            Text="Voir le détail"
+            CssClass="btn btn-sm btn-link"
+            runat="server" />
             </div>
         </ItemTemplate>
     </asp:Repeater>

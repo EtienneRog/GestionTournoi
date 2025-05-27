@@ -9,9 +9,7 @@ namespace GestionTournoi.App_Code
     {
         public static void AddTeam(Team team)
         {
-            var teams = JsonStorage.LoadTeams();
-            teams.Add(team);
-            JsonStorage.SaveTeams(teams);
+            JsonStorage.SaveTeams(team);
         }
 
         public static List<Team> GetAllEquipes()
@@ -21,8 +19,40 @@ namespace GestionTournoi.App_Code
 
         public static void ClearTeams()
         {
-            JsonStorage.SaveTeams(new List<Team>());
+            JsonStorage.UpdateTeams(new List<Team>());
         }
+        public static void SynchroniserEquipes(Team equipeMaj)
+        {
+            // Mise à jour des poules
+            var poules = JsonStorage.LoadPoules();
 
+            foreach (var poule in poules)
+            {
+                for (int i = 0; i < poule.Teams.Count; i++)
+                {
+                    if (poule.Teams[i].Id == equipeMaj.Id)
+                    {
+                        poule.Teams[i] = equipeMaj;
+                    }
+                }
+            }
+
+            JsonStorage.UpdatePoules(poules);
+
+            // Mise à jour des phases éliminatoires
+            var eliminatoires = JsonStorage.LoadEliminatoires();
+
+            foreach (var eliminatoire in eliminatoires)
+            {
+                for (int i = 0; i < eliminatoire.Teams.Count; i++)
+                {
+                    if (eliminatoire.Teams[i].Id == equipeMaj.Id)
+                    {
+                        eliminatoire.Teams[i] = equipeMaj;
+                    }
+                }
+            }
+            JsonStorage.UpdateEliminatoires(eliminatoires);
+        }
     }
 }

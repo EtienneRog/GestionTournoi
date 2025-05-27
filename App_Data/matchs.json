@@ -6,7 +6,8 @@
     "ScoreA": 15,
     "ScoreB": 11,
     "PhaseNom": "Poule 1-2",
-    "Phase": 0
+    "Phase": 0,
+    "PhaseDtl": 0
   },
   {
     "Id": 11,
@@ -15,7 +16,8 @@
     "ScoreA": 15,
     "ScoreB": 9,
     "PhaseNom": "Poule 1-2",
-    "Phase": 0
+    "Phase": 0,
+    "PhaseDtl": 0
   },
   {
     "Id": 12,
@@ -24,7 +26,8 @@
     "ScoreA": 13,
     "ScoreB": 15,
     "PhaseNom": "Poule 1-2",
-    "Phase": 0
+    "Phase": 0,
+    "PhaseDtl": 0
   },
   {
     "Id": 55,
@@ -33,7 +36,8 @@
     "ScoreA": 15,
     "ScoreB": 10,
     "PhaseNom": "Poule 1-1",
-    "Phase": 0
+    "Phase": 0,
+    "PhaseDtl": 0
   },
   {
     "Id": 56,
@@ -42,7 +46,8 @@
     "ScoreA": 15,
     "ScoreB": 4,
     "PhaseNom": "Poule 1-1",
-    "Phase": 0
+    "Phase": 0,
+    "PhaseDtl": 0
   },
   {
     "Id": 57,
@@ -51,6 +56,227 @@
     "ScoreA": 15,
     "ScoreB": 4,
     "PhaseNom": "Poule 1-1",
-    "Phase": 0
+    "Phase": 0,
+    "PhaseDtl": 0
+  },
+  {
+    "Id": 1,
+    "EquipeA": "Equipe 3-2",
+    "EquipeB": "Equipe 4-3",
+    "ScoreA": null,
+    "ScoreB": null,
+    "PhaseNom": "Eliminatoire fortes-2)",
+    "Phase": 1,
+    "PhaseDtl": 0
+  },
+  {
+    "Id": 8,
+    "EquipeA": "Equipe 3-2",
+    "EquipeB": "Equipe 2-2",
+    "ScoreA": null,
+    "ScoreB": null,
+    "PhaseNom": "Eliminatoire fortes-8)",
+    "Phase": 1,
+    "PhaseDtl": 0
+  },
+  {
+    "Id": 9,
+    "EquipeA": "Equipe 4-3",
+    "EquipeB": "Equipe 2-3",
+    "ScoreA": null,
+    "ScoreB": null,
+    "PhaseNom": "Eliminatoire fortes-8)",
+    "Phase": 1,
+    "PhaseDtl": 0
+  },
+  {
+    "Id": 10,
+    "EquipeA": "Equipe 1-3",
+    "EquipeB": "Equipe 1-1",
+    "ScoreA": null,
+    "ScoreB": null,
+    "PhaseNom": "Eliminatoire fortes-8)",
+    "Phase": 1,
+    "PhaseDtl": 0
+  },
+  {
+    "Id": 11,
+    "EquipeA": "Equipe 1-2",
+    "EquipeB": "Equipe 3-3",
+    "ScoreA": null,
+    "ScoreB": null,
+    "PhaseNom": "Eliminatoire fortes-8)",
+    "Phase": 1,
+    "PhaseDtl": 0
+  },
+  {
+    "Id": 1,
+    "EquipeA": "Equipe 3-2",
+    "EquipeB": "Equipe 2-1",
+    "ScoreA": null,
+    "ScoreB": null,
+    "PhaseNom": "Eliminatoire fortes-8)",
+    "Phase": 1,
+    "PhaseDtl": 8
+  },
+  {
+    "Id": 2,
+    "EquipeA": "Equipe 4-3",
+    "EquipeB": "Equipe 3-1",
+    "ScoreA": null,
+    "ScoreB": null,
+    "PhaseNom": "Eliminatoire fortes-8)",
+    "Phase": 1,
+    "PhaseDtl": 8
+  },
+  {
+    "Id": 3,
+    "EquipeA": "Equipe 1-3",
+    "EquipeB": "Equipe 3-3",
+    "ScoreA": 25,
+    "ScoreB": 21,
+    "PhaseNom": "Eliminatoire fortes-8)",
+    "Phase": 1,
+    "PhaseDtl": 8
+  },
+  {
+    "Id": 4,
+    "EquipeA": "Equipe 1-2",
+    "EquipeB": "Equipe 4-1",
+    "ScoreA": null,
+    "ScoreB": null,
+    "PhaseNom": "Eliminatoire fortes-8)",
+    "Phase": 1,
+    "PhaseDtl": 8
+  },
+  {
+    "Id": 1,
+    "EquipeA": "Equipe 3-2",
+    "EquipeB": "Equipe 2-1",
+    "ScoreA": null,
+    "ScoreB": null,
+    "PhaseNom": "Eliminatoire faibles-8)",
+    "Phase": 1,
+    "PhaseDtl": 8
+  },
+  {
+    "Id": 2,
+    "EquipeA": "Equipe 4-3",
+    "EquipeB": "Equipe 3-1",
+    "ScoreA": null,
+    "ScoreB": null,
+    "PhaseNom": "Eliminatoire faibles-8)",
+    "Phase": 1,
+    "PhaseDtl": 8
+  },
+  {
+    "Id": 3,
+    "EquipeA": "Equipe 1-3",
+    "EquipeB": "Equipe 3-3",
+    "ScoreA": null,
+    "ScoreB": null,
+    "PhaseNom": "Eliminatoire faibles-8)",
+    "Phase": 1,
+    "PhaseDtl": 8
+  },
+  {
+    "Id": 4,
+    "EquipeA": "Equipe 1-2",
+    "EquipeB": "Equipe 4-1",
+    "ScoreA": null,
+    "ScoreB": null,
+    "PhaseNom": "Eliminatoire faibles-8)",
+    "Phase": 1,
+    "PhaseDtl": 8
+  },
+  {
+    "Id": 1,
+    "EquipeA": "Equipe 1-3",
+    "EquipeB": "Equipe 4-2",
+    "ScoreA": 25,
+    "ScoreB": 21,
+    "PhaseNom": "Eliminatoire fortes-8",
+    "Phase": 1,
+    "PhaseDtl": 8
+  },
+  {
+    "Id": 2,
+    "EquipeA": "Equipe 2-3",
+    "EquipeB": "Equipe 3-2",
+    "ScoreA": 25,
+    "ScoreB": 21,
+    "PhaseNom": "Eliminatoire fortes-8",
+    "Phase": 1,
+    "PhaseDtl": 8
+  },
+  {
+    "Id": 3,
+    "EquipeA": "Equipe 3-3",
+    "EquipeB": "Equipe 2-2",
+    "ScoreA": 25,
+    "ScoreB": 21,
+    "PhaseNom": "Eliminatoire fortes-8",
+    "Phase": 1,
+    "PhaseDtl": 8
+  },
+  {
+    "Id": 4,
+    "EquipeA": "Equipe 4-3",
+    "EquipeB": "Equipe 1-2",
+    "ScoreA": 25,
+    "ScoreB": 21,
+    "PhaseNom": "Eliminatoire fortes-8",
+    "Phase": 1,
+    "PhaseDtl": 8
+  },
+  {
+    "Id": 24,
+    "EquipeA": "Equipe 1-3",
+    "EquipeB": "Equipe 4-3",
+    "ScoreA": null,
+    "ScoreB": null,
+    "PhaseNom": "Eliminatoire faibles-4",
+    "Phase": 1,
+    "PhaseDtl": 4
+  },
+  {
+    "Id": 25,
+    "EquipeA": "Equipe 2-3",
+    "EquipeB": "Equipe 3-3",
+    "ScoreA": null,
+    "ScoreB": null,
+    "PhaseNom": "Eliminatoire faibles-4",
+    "Phase": 1,
+    "PhaseDtl": 4
+  },
+  {
+    "Id": 76,
+    "EquipeA": "Equipe 1-3",
+    "EquipeB": "Equipe 2-3",
+    "ScoreA": 25,
+    "ScoreB": 21,
+    "PhaseNom": "Eliminatoire fortes-8",
+    "Phase": 1,
+    "PhaseDtl": 4
+  },
+  {
+    "Id": 77,
+    "EquipeA": "Equipe 3-3",
+    "EquipeB": "Equipe 4-3",
+    "ScoreA": 25,
+    "ScoreB": 21,
+    "PhaseNom": "Eliminatoire fortes-8",
+    "Phase": 1,
+    "PhaseDtl": 4
+  },
+  {
+    "Id": 184,
+    "EquipeA": "Equipe 1-3",
+    "EquipeB": "Equipe 3-3",
+    "ScoreA": null,
+    "ScoreB": null,
+    "PhaseNom": "Eliminatoire fortes-8",
+    "Phase": 1,
+    "PhaseDtl": 2
   }
 ]
