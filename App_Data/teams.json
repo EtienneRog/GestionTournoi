@@ -1,1 +1,98 @@
-[]
+[
+  {
+    "Id": 0,
+    "Name": "Equipe 1 - 1",
+    "Level": 1,
+    "Points": 12,
+    "PointsDtl": 0,
+    "LevelName": "Départementale"
+  },
+  {
+    "Id": 1,
+    "Name": "Equipe 2 - 1",
+    "Level": 1,
+    "Points": 11,
+    "PointsDtl": 0,
+    "LevelName": "Départementale"
+  },
+  {
+    "Id": 3,
+    "Name": "Equipe 3 - 1",
+    "Level": 1,
+    "Points": 10,
+    "PointsDtl": 0,
+    "LevelName": "Départementale"
+  },
+  {
+    "Id": 6,
+    "Name": "Equipe 4 - 1",
+    "Level": 1,
+    "Points": 9,
+    "PointsDtl": 0,
+    "LevelName": "Départementale"
+  },
+  {
+    "Id": 10,
+    "Name": "Equipe 1 - 2",
+    "Level": 2,
+    "Points": 8,
+    "PointsDtl": 0,
+    "LevelName": "Régionale"
+  },
+  {
+    "Id": 15,
+    "Name": "Equipe 2 - 2",
+    "Level": 2,
+    "Points": 7,
+    "PointsDtl": 0,
+    "LevelName": "Régionale"
+  },
+  {
+    "Id": 21,
+    "Name": "Equipe 3 - 2",
+    "Level": 2,
+    "Points": 6,
+    "PointsDtl": 0,
+    "LevelName": "Régionale"
+  },
+  {
+    "Id": 28,
+    "Name": "Equipe 4 - 2",
+    "Level": 2,
+    "Points": 5,
+    "PointsDtl": 0,
+    "LevelName": "Régionale"
+  },
+  {
+    "Id": 36,
+    "Name": "Equipe 1 - 3",
+    "Level": 3,
+    "Points": 4,
+    "PointsDtl": 0,
+    "LevelName": "Nationale"
+  },
+  {
+    "Id": 45,
+    "Name": "Equipe 2 - 3",
+    "Level": 3,
+    "Points": 3,
+    "PointsDtl": 0,
+    "LevelName": "Nationale"
+  },
+  {
+    "Id": 55,
+    "Name": "Equipe 3 - 3",
+    "Level": 3,
+    "Points": 2,
+    "PointsDtl": 0,
+    "LevelName": "Nationale"
+  },
+  {
+    "Id": 66,
+    "Name": "Equipe 4 - 3",
+    "Level": 3,
+    "Points": 1,
+    "PointsDtl": 0,
+    "LevelName": "Nationale"
+  }
+]

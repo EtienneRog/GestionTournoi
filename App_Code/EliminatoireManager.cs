@@ -8,14 +8,21 @@ namespace GestionTournoi.App_Code
     public class EliminatoireManager
     {
 
-        public static void GenererEliminatoire(int nombreEquipes, string triType)
+        public static string GenererEliminatoire(int nombreEquipes, string triType)
         {
-            var phase = new Eliminatoire($"Eliminatoire {triType}-{nombreEquipes.ToString()}");
+            string phaseName = $"Eliminatoire {triType}-{nombreEquipes}";
+
+            // Vérifie si la phase existe déjà
+            var phasesExistantes = JsonStorage.LoadEliminatoires();
+            if (phasesExistantes.Any(p => p.Name.Equals(phaseName, StringComparison.OrdinalIgnoreCase)))
+                return "⚠️ Une phase éliminatoire avec ce nom existe déjà.";
+
+            var phase = new Eliminatoire(phaseName);
             List<Team> allTeams = JsonStorage.LoadTeams();
             List<Team> selection;
             // Vérification : pas assez d'équipes
             if (allTeams.Count < nombreEquipes)
-                throw new InvalidOperationException("Pas assez d'équipes pour générer cette phase.");
+                return "❌ Pas assez d'équipes pour générer cette phase.";
 
             if (triType.Equals("Consolante", StringComparison.OrdinalIgnoreCase))
             {
@@ -53,6 +60,7 @@ namespace GestionTournoi.App_Code
 
             JsonStorage.SaveEliminatoires(phase);
             JsonStorage.SaveMatchs(matchs);
+            return "ok";
         }
 
 

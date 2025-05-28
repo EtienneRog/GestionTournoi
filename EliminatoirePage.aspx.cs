@@ -23,10 +23,28 @@ namespace GestionTournoi
             int nbEquipes = int.Parse(ddlProfondeur.SelectedValue);
             string tri = rblTriEquipes.SelectedValue;
 
-            EliminatoireManager.GenererEliminatoire(nbEquipes, tri);
+            try
+            {
+                string resultMessage = EliminatoireManager.GenererEliminatoire(nbEquipes, tri);
 
-            lblMessage.Text = "Phase créée avec succès.";
-            BindPhases();
+                if (resultMessage != "ok")
+                {
+                    lblMessage.Text = resultMessage;
+                    lblMessage.ForeColor = System.Drawing.Color.OrangeRed;
+                }
+                else
+                {
+                    lblMessage.Text = "✅ Phase générée avec succès.";
+                    lblMessage.ForeColor = System.Drawing.Color.Green;
+                }
+
+                BindPhases();
+            }
+            catch (Exception ex)
+            {
+                lblMessage.Text = $"Erreur inattendue : {ex.Message}";
+                lblMessage.ForeColor = System.Drawing.Color.Red;
+            }
         }
 
         private void BindPhases()

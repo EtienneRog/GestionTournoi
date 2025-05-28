@@ -1,1 +1,122 @@
-[]
+[
+  {
+    "Id": 1,
+    "EquipeA": "Equipe 1 - 1",
+    "EquipeB": "Equipe 4 - 2",
+    "ScoreA": null,
+    "ScoreB": null,
+    "PhaseNom": "Eliminatoire Principale-8",
+    "Phase": 1,
+    "PhaseDtl": 8
+  },
+  {
+    "Id": 2,
+    "EquipeA": "Equipe 2 - 1",
+    "EquipeB": "Equipe 3 - 2",
+    "ScoreA": null,
+    "ScoreB": null,
+    "PhaseNom": "Eliminatoire Principale-8",
+    "Phase": 1,
+    "PhaseDtl": 8
+  },
+  {
+    "Id": 3,
+    "EquipeA": "Equipe 3 - 1",
+    "EquipeB": "Equipe 2 - 2",
+    "ScoreA": null,
+    "ScoreB": null,
+    "PhaseNom": "Eliminatoire Principale-8",
+    "Phase": 1,
+    "PhaseDtl": 8
+  },
+  {
+    "Id": 4,
+    "EquipeA": "Equipe 4 - 1",
+    "EquipeB": "Equipe 1 - 2",
+    "ScoreA": null,
+    "ScoreB": null,
+    "PhaseNom": "Eliminatoire Principale-8",
+    "Phase": 1,
+    "PhaseDtl": 8
+  },
+  {
+    "Id": 5,
+    "EquipeA": "Equipe 4 - 3",
+    "EquipeB": "Equipe 1 - 3",
+    "ScoreA": null,
+    "ScoreB": null,
+    "PhaseNom": "Eliminatoire Consolante-4",
+    "Phase": 1,
+    "PhaseDtl": 4
+  },
+  {
+    "Id": 6,
+    "EquipeA": "Equipe 3 - 3",
+    "EquipeB": "Equipe 2 - 3",
+    "ScoreA": null,
+    "ScoreB": null,
+    "PhaseNom": "Eliminatoire Consolante-4",
+    "Phase": 1,
+    "PhaseDtl": 4
+  },
+  {
+    "Id": 17,
+    "EquipeA": "Equipe 1 - 1",
+    "EquipeB": "Equipe 4 - 1",
+    "ScoreA": null,
+    "ScoreB": null,
+    "PhaseNom": "Eliminatoire Principale-4",
+    "Phase": 1,
+    "PhaseDtl": 4
+  },
+  {
+    "Id": 18,
+    "EquipeA": "Equipe 2 - 1",
+    "EquipeB": "Equipe 3 - 1",
+    "ScoreA": null,
+    "ScoreB": null,
+    "PhaseNom": "Eliminatoire Principale-4",
+    "Phase": 1,
+    "PhaseDtl": 4
+  },
+  {
+    "Id": 41,
+    "EquipeA": "Equipe 4 - 3",
+    "EquipeB": "Equipe 1 - 2",
+    "ScoreA": null,
+    "ScoreB": null,
+    "PhaseNom": "Eliminatoire Consolante-8",
+    "Phase": 1,
+    "PhaseDtl": 8
+  },
+  {
+    "Id": 42,
+    "EquipeA": "Equipe 3 - 3",
+    "EquipeB": "Equipe 2 - 2",
+    "ScoreA": null,
+    "ScoreB": null,
+    "PhaseNom": "Eliminatoire Consolante-8",
+    "Phase": 1,
+    "PhaseDtl": 8
+  },
+  {
+    "Id": 43,
+    "EquipeA": "Equipe 2 - 3",
+    "EquipeB": "Equipe 3 - 2",
+    "ScoreA": null,
+    "ScoreB": null,
+    "PhaseNom": "Eliminatoire Consolante-8",
+    "Phase": 1,
+    "PhaseDtl": 8
+  },
+  {
+    "Id": 44,
+    "EquipeA": "Equipe 1 - 3",
+    "EquipeB": "Equipe 4 - 2",
+    "ScoreA": null,
+    "ScoreB": null,
+    "PhaseNom": "Eliminatoire Consolante-8",
+    "Phase": 1,
+    "PhaseDtl": 8
+  }
+]
