@@ -239,39 +239,35 @@ namespace GestionTournoi
                 }
             }
         }
-        protected void btnResetData_Click(object sender, EventArgs e)
+        protected void btnResetSelected_Click(object sender, EventArgs e)
         {
-            try
+            var selectedValues = chkResetOptions.Items.Cast<ListItem>()
+                                      .Where(i => i.Selected)
+                                      .Select(i => i.Value)
+                                      .ToList();
+
+            foreach (string value in selectedValues)
             {
-                // Supprime les fichiers JSON si existants
-                string basePath = Server.MapPath("~/App_Data/");
-
-                string[] jsonFiles = new string[]
+                switch (value)
                 {
-            "teams.json",
-            "matchs.json",
-            "poules.json",
-            "eliminatoires.json"
-                };
-
-                foreach (var fileName in jsonFiles)
-                {
-                    string path = System.IO.Path.Combine(basePath, fileName);
-                    if (System.IO.File.Exists(path))
-                        System.IO.File.Delete(path);
+                    case "teams":
+                        JsonStorage.UpdateTeams(new List<Team>());
+                        break;
+                    case "poules":
+                        JsonStorage.UpdatePoules(new List<Poule>());
+                        break;
+                    case "matchs":
+                        JsonStorage.UpdateMatchs(new List<Matchs>());
+                        break;
+                    case "eliminatoires":
+                        JsonStorage.UpdateEliminatoires(new List<Eliminatoire>());
+                        break;
                 }
-
-                lblResetMessage.ForeColor = System.Drawing.Color.Green;
-                lblResetMessage.Text = "Tous les fichiers JSON ont été réinitialisés avec succès.";
-
-                BindGrid(); // Recharge la grille vide
             }
-            catch (Exception ex)
-            {
-                lblResetMessage.ForeColor = System.Drawing.Color.Red;
-                lblResetMessage.Text = "Erreur lors de la réinitialisation : " + ex.Message;
-            }
+
+            lblResetMessage.Text = "Les données sélectionnées ont été réinitialisées.";
         }
+
 
     }
 

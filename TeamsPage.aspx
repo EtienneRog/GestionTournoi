@@ -18,9 +18,19 @@
     <br />
     <br />
     <br />
-    <asp:Button ID="btnResetData" runat="server" Text="Réinitialiser les données JSON" OnClick="btnResetData_Click" CssClass="btn btn-danger" />
-<asp:Label ID="lblResetMessage" runat="server" ForeColor="Red" />
-    <br />
+<hr />
+<h3>Réinitialisation des données</h3>
+
+<asp:CheckBoxList ID="chkResetOptions" runat="server">
+    <asp:ListItem Text="Équipes" Value="teams" />
+    <asp:ListItem Text="Poules" Value="poules" />
+    <asp:ListItem Text="Matchs" Value="matchs" />
+    <asp:ListItem Text="Éliminatoires" Value="eliminatoires" />
+</asp:CheckBoxList>
+
+<br />
+<asp:Button ID="btnResetSelected" runat="server" Text="Réinitialiser la sélection" OnClick="btnResetSelected_Click" CssClass="btn btn-danger" />
+<asp:Label ID="lblResetMessage" runat="server" ForeColor="Green" />
     <br />
 
     <h3>Liste des équipes</h3>
